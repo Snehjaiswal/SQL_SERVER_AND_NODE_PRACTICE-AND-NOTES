@@ -24,25 +24,30 @@ Primary Key Foreign Key
 Composite Key 
 Check 
 Unique Constraints"</li>
-  <h3><li>Practical - 1</li></h3>
-  <br><hr>
+  <h3>Practical - 1</h3>
+  <hr>
   <li>Select</li>
   <li>Insert</li>
   <li>Update</li>
   <li>Delete</li>
   <li>Where</li>
   <li>Distinct</li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
-  <li></li><li></li>
+  <li>Group By</li><li>Having,</li>
+  <li>Order By </li><li>Joins</li>
+  <li>CASE</li><li>Dynamic Queries</li>
+  <h3>Practical - 2</h3>
+  <hr>
+  <li>CAST</li><li>Convert</li>
+  <li>Copy table</li><li>Rename table</li>
+  <li>Truncate table</li><li>User defined functions</li>
+  <li>Built-In Functions</li><li>DATE functions</li>
+  <li>String Functions</li>
+  <h3>Practical - 3 </h3>
+  <hr>
+  <li>Views</li>
+  <li>Stored Procedures</li><li>Indexes</li>
+  <li>Cursors</li><li>Triggers</li>
+  <li>Sequence</li>
+  <h3>Practical - 4</h3>
   
 </ol>
