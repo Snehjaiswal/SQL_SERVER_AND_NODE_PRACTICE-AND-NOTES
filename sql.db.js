@@ -1,34 +1,34 @@
-const sql = require('mssql')
+const sql = require('mssql')   /// MSSQL REQUIRE
 
+
+// SQL CONFIG ITS HELP TO CONNECT DB IT IS CONNECTER STRING
 const sqlConfig = {
-    user: 'interndb',
-    password: 'Int@2022',
-    database: 'interndb',
-    server: 'mssql.esmsys.in',
-    port:14251,
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
+    user: "interndb",
+    password: "Int@2022",
+    server: "mssql.esmsys.in",
+    database: "interndb",
+    port: 14251,
+    options: {
+        encrypt: false,
+        useUTC: true,
     }
 }
+
 
 sql.on('error', err => {
     console.log(err.message);
 })
 
+// ASYNC FUNCTION TO CONNECT AND GET DB DATA
 async function getData() {
     try {
-        // make sure that any items are correctly URL encoded in the connection string
-
         let pool = await sql.connect(sqlConfig);
-
-        console.log('run');
-        console.log(pool);
-        const result = await pool.request().query('select * from dbo.Empolyee3')
+        const result = await pool.request().query('SP_TWOTABLEDATA')
         console.dir(result)
     } catch (err) {
         console.log(err);
     }
 }
-getData()
+
+// CALL FUNCTION
+getData();
