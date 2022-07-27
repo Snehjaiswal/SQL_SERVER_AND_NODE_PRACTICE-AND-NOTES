@@ -1,8 +1,8 @@
 # SQL-SERVER-AND-NODE-PRACTICE-AND-NOTES
 
 <h1>SQL SERVER</h1>
-<h6>Topic's of sql (using ssms) </h6>
 <p>Suggestions  <a href="https://www.youtube.com/watch?v=7GVFYt6_ZFM&list=PL08903FB7ACA1C2FB&index=1">Click here</a></p>
+<h4>Topic's of sql (using ssms) </h4>
 <ol>
 <li>Install SQL Server</li> 
 <li>SSMS Overview</li> 
@@ -50,5 +50,5 @@ Unique Constraints"</li>
   <li>Cursors</li><li>Triggers</li>
   <li>Sequence</li>
   <h3>Practical - 4</h3>
-  
 </ol>
+<hr>
