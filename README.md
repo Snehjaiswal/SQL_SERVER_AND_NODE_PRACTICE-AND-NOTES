@@ -49,5 +49,5 @@ Unique Constraints"</li>
   <li>Cursors</li><li>Triggers</li>
   <li>Sequence</li>
   <h3>Practical - 4</h3>
-  
+<hr>
 </ol>
