@@ -2,6 +2,7 @@
 
 <h1>SQL SERVER</h1>
 <h6>Topic's of sql (using ssms) </h6>
+<p>suggestions  <a href="https://www.youtube.com/watch?v=7GVFYt6_ZFM&list=PL08903FB7ACA1C2FB&index=1">Click here</a></p>
 <ol>
 <li>Install SQL Server</li> 
 <li>SSMS Overview</li> 
