@@ -19,7 +19,7 @@ sql.on('error', err => {
 })
 
 // ASYNC FUNCTION TO CONNECT AND GET DB DATA
-async function getData() {
+(async function getData() {
     try {
         let pool = await sql.connect(sqlConfig);
         const result = await pool.request().query('select * from table_name')
@@ -28,7 +28,6 @@ async function getData() {
     } catch (err) {
         console.log(err);
     }
-}
-
+})()
 // CALL FUNCTION
 getData();
