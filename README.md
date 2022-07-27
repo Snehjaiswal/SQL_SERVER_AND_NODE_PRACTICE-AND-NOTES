@@ -1,8 +1,7 @@
 # SQL-SERVER-AND-NODE-PRACTICE-AND-NOTES
 
-<h1>SQL SERVER</h1>
+<h1>SQL SERVER (SSMS)</h1>
 <p>Video Suggestions  <a href="https://www.youtube.com/watch?v=7GVFYt6_ZFM&list=PL08903FB7ACA1C2FB&index=1">Click here</a></p>
-<h4>Topic's of sql (using ssms) </h4>
 <ol>
   <h3>Weel-1</h3>
 <li>Install SQL Server</li> 
