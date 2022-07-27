@@ -14,7 +14,6 @@ const sqlConfig = {
     }
 }
 
-
 sql.on('error', err => {
     console.log(err.message);
 })
@@ -25,6 +24,7 @@ async function getData() {
         let pool = await sql.connect(sqlConfig);
         const result = await pool.request().query('SP_TWOTABLEDATA')
         console.dir(result)
+       
     } catch (err) {
         console.log(err);
     }
