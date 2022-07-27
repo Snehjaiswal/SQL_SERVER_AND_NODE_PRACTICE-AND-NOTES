@@ -2,17 +2,7 @@ const sql = require('mssql')   /// MSSQL REQUIRE
 
 
 // SQL CONFIG ITS HELP TO CONNECT DB IT IS CONNECTER STRING
-const sqlConfig = {
-    user: "interndb",
-    password: "Int@2022",
-    server: "mssql.esmsys.in",
-    database: "interndb",
-    port: 14251,
-    options: {
-        encrypt: false,
-        useUTC: true,
-    }
-}
+
 
 sql.on('error', err => {
     console.log(err.message);
