@@ -14,6 +14,7 @@ const sqlConfig = {
     }
 }
 
+
 sql.on('error', err => {
     console.log(err.message);
 })
