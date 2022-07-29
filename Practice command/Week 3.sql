@@ -45,7 +45,7 @@ GO
 --WITH ENCRYPTION
 --AS
 --BEGIN
---SELECT EMPLOYEEID ,EMPLOYEENAME ,EMPLOYEESALARY ,DOJ ,EMAIL ,DESIGNATION , DEPARTMENTNAME 
+--SELECT EMPLOYEEID ,EMPLOYEENAME ,EmployeeSalary ,DOJ ,EMAIL ,DESIGNATION , DEPARTMENTNAME 
 --FROM 
 --EMPLOYEE3 
 --FULL JOIN
@@ -61,7 +61,7 @@ GO
 --ALTER PROCEDURE SPTWOTABLEDATA
 --AS
 --BEGIN
---SELECT EMPLOYEEID ,EMPLOYEENAME ,EMPLOYEESALARY ,DOJ ,EMAIL ,DESIGNATION , DEPARTMENTNAME 
+--SELECT EMPLOYEEID ,EMPLOYEENAME ,EmployeeSalary ,DOJ ,EMAIL ,DESIGNATION , DEPARTMENTNAME 
 --FROM 
 --EMPLOYEE3 
 --FULL JOIN
@@ -84,7 +84,7 @@ GO
 --WITH ENCRYPTION
 --AS
 --BEGIN
---SELECT EMPLOYEEID ,EMPLOYEENAME ,EMPLOYEESALARY ,DOJ ,EMAIL ,DESIGNATION , DEPARTMENTNAME 
+--SELECT EMPLOYEEID ,EMPLOYEENAME ,EmployeeSalary ,DOJ ,EMAIL ,DESIGNATION , DEPARTMENTNAME 
 --FROM 
 --EMPLOYEE3 
 --FULL JOIN
@@ -394,17 +394,200 @@ GO
 --SELECT * FROM Employee3  join Department3 on Employee3.DepartmentID = Department3.DepartmentID
 
 --GO 
---ALTER FUNCTION fn_viewDAta  (@dep int)
---returns table
---as
---return( SELECT * FROM Employee3  
---where DepartmentID = @dep )
+ALTER FUNCTION fn_viewDAta  (@dep int)
+returns table
+as
+return( SELECT * FROM Employee3  
+where DepartmentID = @dep )
 
-select * from fn_viewDAta(1)
+select * from fn_viewDAta(1) where EmployeeSalary =(
+select max(EmployeeSalary) from fn_viewDAta(1))
 
 select REPLACE(Designation,'i','I') from fn_viewDAta(1)
 -----------------------------------------------------------------------------------------	
 --function practice
+ SELECT Designation, sum(EmployeeSalary) from Employee3 group by Designation;
+
+ SELECT distinct EmployeeSalary from Employee3 a 
+ WHERE 3 >= (SELECT count(distinct EmployeeSalary) from Employee3 b 
+ WHERE a.EmployeeSalary <= b.EmployeeSalary) order by a.EmployeeSalary desc;
+
+ GO
+
+ Select max(EmployeeSalary) from Employee3 
+where EmployeeSalary not in (Select max(EmployeeSalary) from Employee3);
+
+Go
+
+SELECT EmployeeSalary
+FROM Employee3 W1
+WHERE 4 = (
+ SELECT COUNT( DISTINCT ( W2.EmployeeSalary ) )
+ FROM Employee3 W2
+ WHERE W2.EmployeeSalary >= W1.EmployeeSalary
+ );
+
+ SELECT EmployeeSalary
+FROM Employee3 W1
+WHERE n-1 = (
+ SELECT COUNT( DISTINCT ( W2.EmployeeSalary ) )
+ FROM Employee3 W2
+ WHERE W2.EmployeeSalary >= W1.EmployeeSalary
+ );	
+ GO
+SELECT max(EmployeeName) from Employee3
+GO
+SELECT len(EmployeeName) from Employee3
+GO
+
+ALTER procedure CheckAge 
+@age int ,
+@ans varchar(max) out
+as 
+if(@age > 18)
+
+begin
+set @ans = 'you are age is greater than 18'
+end
+else
+begin
+set @ans = 'you are age is less than 18'
+end
+
+GO
+
+declare @ans varchar(max)
+exec CheckAge  8 , @ans out
+print @ans
+
+GO
+
+SELECT CURRENT_USER;
+
+GO
+
+
+SELECT IIF(500<1000, IIF(500<1000, IIF(500<1000, 'YES2', 'NO'), 'NO2'), 'NO');
+
+GO
+
+SELECT SESSION_USER;
+
+
+GO
+
+SELECT SYSTEM_USER;
+
+GO
+
+SELECT USER_NAME();
+SELECT USER_NAME(1);
+SELECT USER_NAME(2);
+SELECT USER_NAME(3);
+SELECT USER_NAME(4);
+SELECT USER_NAME(5);
+SELECT USER_NAME(6);
+SELECT USER_NAME(7);
+SELECT USER_NAME(8);
+SELECT USER_NAME(9);
+SELECT USER_NAME(10);
+
+GO 
+-----------------------------------------------------------------------------------------
+
+--User defined function
+--scaler function
+
+--alter function multy (@a int,@b int )
+--returns char(10)
+--as 
+--begin 
+--DECLARE @c int
+--set @c = @a*@b;
+
+--return @c
+--end
+--GO
+----------------------------|
+--select  dbo.multy(10,20)--|
+--------------------------|
+;
+GO
+
+GO
+----------------------------------------------------
+GO
+declare @x int,@y int
+select @x=5,@y=0
+while @x>0
+begin
+print space(@x)+replicate('*',@y)+replicate('*',@y+1)
+set @y=@y+1
+set @x=@x-1
+end
+ --    *
+ --   ***
+ --  *****
+ -- *******
+ --*********
+ ----------------------------------------------
+
+-- SELECT a.stock_code
+--FROM price_today a
+--INNER JOIN price_tomorrow b
+--ON a.stock_code = b.stock_code
+--WHERE b.price>a.price
+--ORDER BY stock_code asc;
+
+
+--select std.roll_number, std.name 
+--from student_information std, faculty_information fi 
+--where std.advisor = fi.employee_id and (fi.gender = 'M' and fi.salary > 15000 or fi.gender = 'F' and fi.salary > 20000) 
+GO
+--Scalar function
+CREATE FUNCTION fn_SumTwoNum (@a int , @b int )
+RETURNS  CHAR(10)
+AS
+BEGIN
+DECLARE @c int
+set @c = @a + @b;
+
+RETURN @c
+END
+
+Go --Call function
+SELECT dbo.fn_SumTwoNum(10,20)
+GO
+-----------------------------------------------
+--Inline table valued function
+--ALTER FUNCTION fn_inlineTable ( )
+--RETURNS  TABLE
+--AS
+--RETURN
+--(
+--SELECT * FROM Employee3 
+--)
+--Go --Call function
+--SELECT *FROM dbo.fn_inlineTable()
+--------------------------------------------------
+GO
+--Multy line table valued function
+
+ALTER FUNCTION fn_multyLineTable ( )
+RETURNS  @t TABLE (id int , name varchar(20),salary int)
+AS
+BEGIN
+
+INSERT INTO @t
+SELECT EmployeeID,EmployeeName,EmployeeSalary FROM Employee3 where EmployeeSalary >50000;
+RETURN 
+END
+GO--
+SELECT * FROM fn_multyLineTable()
+
+	
+--------------------------------------------------
+GO
 
 
 
